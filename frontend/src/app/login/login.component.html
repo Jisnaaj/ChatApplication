@@ -1,0 +1,84 @@
+<div class="id">
+    <div class="container">
+      <div class="form1">
+        <mat-card>
+          <a routerLink="/"
+            ><button
+              mat-icon-button
+              aria-label="close mat-card-close"
+              mat-card-close
+            >
+              <mat-icon>home</mat-icon>
+            </button></a
+          >
+          <h1>Login</h1>
+          <form
+            [formGroup]="loginForm"
+            (ngSubmit)="onsubmitlogin(loginForm.value)"
+          >
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="Enter your email"
+                formControlName="email"
+              />
+              <mat-error *ngIf="login?.['email']?.errors?.['email'] && submitted"
+                >Invalid email</mat-error
+              >
+              <mat-error
+                *ngIf="login?.['email']?.errors?.['required'] && submitted"
+                >Required email</mat-error
+              >
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                placeholder="Enter your password"
+                [type]="hide ? 'password' : 'text'"
+                formControlName="password"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="loginForm.controls['password'].hasError('minlength')"
+              >
+                Your password must be at least 5 characters long.</mat-error
+              >
+              <mat-error
+                *ngIf="login?.['password']?.errors?.['required'] && submitted"
+                >Required password</mat-error
+              >
+            </mat-form-field>
+            <mat-dialog-actions class="centering">
+              <button
+                class="btn"
+                mat-raised-button
+                color="accent"
+                [disabled]="!loginForm.valid"
+              >
+                Submit
+              </button>
+              <br />
+              <span
+                >New user?
+                <a class="link" routerLink="/signup"
+                  ><span style="color: crimson">Register here.</span>
+                </a></span
+              >
+            </mat-dialog-actions>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  

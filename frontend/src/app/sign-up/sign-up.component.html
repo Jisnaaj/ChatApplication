@@ -1,0 +1,136 @@
+
+<div class="id">
+    <div class="container d-flex justify-content-center">
+      <div class="form1">
+        <mat-card>
+          <a routerLink="/"
+            ><button
+              mat-icon-button
+              aria-label="close mat-card-close"
+              mat-card-close
+            >
+              <mat-icon>home</mat-icon>
+            </button></a
+          >
+          <h1>SignUp</h1>
+          <form
+            [formGroup]="signupForm"
+            (ngSubmit)="onsubmitsignup(signupForm.value)"
+          >
+            <mat-form-field appearance="outline">
+              <mat-label>Name of user</mat-label>
+              <input
+                matInput
+                placeholder="Enter your name"
+                formControlName="name"
+              />
+              <mat-error
+                *ngIf="signup?.['name']?.errors?.['required'] && submittedsignup"
+                >Required name</mat-error
+              >
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="Enter your email"
+                formControlName="email"
+              />
+              <mat-error
+                *ngIf="signup?.['email']?.errors?.['pattern'] && submittedsignup"
+                >Invalid email</mat-error
+              >
+              <mat-error
+                *ngIf="signup?.['email']?.errors?.['required'] && submittedsignup"
+                >Required email</mat-error
+              >
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                placeholder="Enter your password"
+                [type]="signuphide ? 'password' : 'text'"
+                formControlName="password"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="signuphide = !signuphide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="signuphide"
+              >
+                <mat-icon>{{
+                  signuphide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="signupForm.controls['password'].hasError('minlength')"
+              >
+                Your password must be at least 5 characters long.</mat-error
+              >
+              <mat-error
+                *ngIf="signup?.['password']?.errors?.['required'] && submittedsignup"
+                >Required password</mat-error
+              >
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>Confim Password</mat-label>
+              <input
+                matInput
+                placeholder="Enter your password"
+                [type]="signuphide ? 'password' : 'text'"
+                formControlName="confirmpassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="signuphide = !signuphide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="signuphide"
+              >
+                <mat-icon>{{
+                  signuphide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="signup?.['confirmpassword']?.errors?.['confirmpassword'] && submittedsignup"
+                >Invalid password</mat-error
+              >
+              <mat-error
+                *ngIf="signup?.['confirmpassword']?.errors?.['required'] && submittedsignup"
+                >Required password</mat-error
+              >
+              <mat-error
+                *ngIf="signup?.['confirmpassword']?.errors?.['passwordMismatch']&& submittedsignup"
+                >Mismatched password</mat-error
+              >
+            </mat-form-field>
+  
+            <mat-dialog-actions class="centering">
+              <button
+                class="btn"
+                mat-raised-button
+                color="accent"
+                [disabled]="!signupForm.valid"
+              >
+                Submit
+              </button>
+  
+              <br />
+              <span
+                >Already Registered?
+                <a class="link" routerLink="/login"
+                  ><span style="color: crimson">Login</span>
+                </a></span
+              >
+            </mat-dialog-actions>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+        
