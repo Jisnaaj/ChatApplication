@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { UserServiceService } from '../user-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup; 
   hide=true; 
   
-  constructor(public fb:FormBuilder) { }
+  constructor(public fb:FormBuilder,private serve:UserServiceService) { }
 
   ngOnInit(): void {
     this.loginForm =this.fb.group({
@@ -22,7 +23,9 @@ export class LoginComponent implements OnInit {
 get login() {
     return this.loginForm.controls
     }
-    onsubmitlogin(values:any){
+onsubmitLogin(values:any){
       this.submitted=true;
+      console.log("success");
+       this.serve.onsubmitLogin(values);
     }   
 }
