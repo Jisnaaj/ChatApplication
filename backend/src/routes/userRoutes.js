@@ -4,13 +4,15 @@ const router = express.Router();
 const {
   login,
   signup,
-  sendEmailOTP,
+  sendOTP,
+  getUserById,
   verifyOTP,
 } = require("../controller/userControllers");
 
 router.post("/login",login);
 router.post("/signup",signup);
-router.post("/sendEmailOTP/:otp",sendEmailOTP);
+router.post("/sendOTP/:otp",sendOTP);
+router.get("/getUserById/:userId",getUserById);
 router.put("/verifyOTP",verifyOTP);
 
 // router.get("/all", getChatByUserId);

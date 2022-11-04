@@ -20,7 +20,7 @@ private router:Router) { }
 ngOnInit(): void {
   this.signupForm =this.fb.group({
       name:['',[Validators.required]],
-      user:['',[Validators.required]],
+      
       email:['',[Validators.required,Validators.pattern('^([a-zA-Z0-9\.-_]+)@([a-zA-Z0-9-]+)\.([a-z]{2,3})(.[a-z]{2,3})$')]],
       password:['',[Validators.required,Validators.minLength(5)]],
       confirmpassword:['',[Validators.required]]
@@ -40,17 +40,19 @@ get signup(){
  
 onsubmitsignup(values:any){
   this.submittedsignup=true;
- this.service.submitsignup(values).subscribe((data)=>{
-  console.log(data);
- })
-  //  console.log(values);
- 
   
-} 
-}    
-
+    var otp = Math.floor(1000 + Math.random() * 9000);
+    this.service.submitsignup(values,otp).subscribe((data)=>{
+      var x = JSON.parse(JSON.stringify(data));
+      const userId = x._id;
+      this.router.navigate(['/otp/' + userId]);
+    }); 
+    this.service.sendOTP(values,otp).subscribe((data2)=>{
+      console.log(data2);
+    })
   
-
+}
+}
   
 
 

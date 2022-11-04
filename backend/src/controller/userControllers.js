@@ -40,20 +40,22 @@ const login = (req,res)=>{
     }
 }
 
-const signup =  (req,res)=>{
+const signup =  async (req,res)=>{
   
-    try{
+    
      
             res.header("Access-Control-Allow-Origin","*");
             res.header("Access-Control-Allow-Headers: Content-Type, application/json");
             res.header("Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS");
-          
-         var signups = {
+           otp = req.params.otp;
+           try{
+            const newUser = await User.create({
                   name:req.body.data.name,
                   email:req.body.data.email,
                   password:req.body.data.password,
+                  otp:otp,
                 
-              }
+              })
            console.log(signups)
               signupmongo.findOne({
                 "email":signups.email
@@ -110,7 +112,7 @@ const signup =  (req,res)=>{
 //   }
 // }
 
-const sendEmailOTP = async (req,res) => {
+const sendOTP = async (req,res) => {
   try{
     userEmail = req.body.item;
     otp = req.params.otp;
@@ -124,7 +126,7 @@ const sendEmailOTP = async (req,res) => {
     });
     const mailOptions = {
       from: 'theresumewizardteam@gmail.com',
-      to: 'krishnaprabha173@gmail.com',
+      to: 'jisnaajvinu@gmail.com',
       // to: userEmail,
       subject: `OTP for chat application`,
       html:`Your OTP for verifying your email for chat application is ` + otp
@@ -179,6 +181,7 @@ const sendEmailOTP = async (req,res) => {
 module.exports = {
 login,
 signup,
-sendEmailOTP,
+sendOTP,
 verifyOTP,
+getUserById
 };

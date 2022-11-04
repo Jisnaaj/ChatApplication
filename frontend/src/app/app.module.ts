@@ -19,12 +19,14 @@ import {MatSelectModule} from '@angular/material/select';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserServiceService } from './user-service.service';
+import { OtpComponent } from './otp/otp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
+    OtpComponent,
   
   ],
   imports: [

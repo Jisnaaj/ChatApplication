@@ -5,6 +5,9 @@ const port = process.env.PORT || 5000;
 const app = express();
 const cors = require("cors");
 const nodemailer = require('nodemailer');
+const http = require('http');
+const { disconnect } = require('process');
+const server = http.createServer(app);
 
 connectDB();
 app.use(express.json());
