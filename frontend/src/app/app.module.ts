@@ -20,6 +20,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserServiceService } from './user-service.service';
 import { OtpComponent } from './otp/otp.component';
+import { UsernameComponent } from './username/username.component';
+import { ChatboardComponent } from './chatboard/chatboard.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { OtpComponent } from './otp/otp.component';
     LoginComponent,
     SignUpComponent,
     OtpComponent,
+    UsernameComponent,
+    ChatboardComponent,
   
   ],
   imports: [

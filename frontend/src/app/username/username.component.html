@@ -1,0 +1,46 @@
+
+<!------ Include the above in your HEAD tag ---------->
+<div id="back">
+    <div class="container">
+      <div class="row">
+        <div class="box">
+         
+          <form class="form-horizontal span6" 
+          [formGroup]="User_form"
+          (ngSubmit)="onSubmitNAME(User_form.value)"           >
+    
+            <fieldset>
+              <legend >User Name</legend><br>
+           
+              <div class="control-group"><br>
+                <label class="control-label">Type Your Name Here</label>
+                <div class="controls">
+                  <input type="text" 
+                  formControlName="nickname"
+                  class="input-block-level"
+                  pattern="\w+ \w+.*" title="Fill your first and last name" required (keyup)="checkusername($event)">
+                </div>
+              </div>
+        <div>
+          <mat-error>
+            {{unameMsg}}
+          </mat-error>
+        </div>
+          
+               <div > 
+                <button  type="submit" mat-raised-button color="accent" [disabled]="(isExist == 1)">Create User Name</button>
+                <!-- <div class="col-1"> -->
+                <!-- <button type="submit" class="btn btn-primary btns">Submit</button> -->
+              <!-- </div> -->
+              <!-- <div class="col-1"> -->
+                <!-- <button type="button" class="btn">Cancel</button> -->
+              
+              <!-- </div> -->
+               </div> 
+            </fieldset>
+          </form>
+        
+        </div>
+      </div>
+    </div>
+    </div>

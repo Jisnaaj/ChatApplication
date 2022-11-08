@@ -11,44 +11,50 @@ import { UserServiceService } from '../user-service.service';
 })
 export class OtpComponent implements OnInit {
 
-  otpInput = '';
-  msg = '';
-  otpForm = new FormGroup({
-  otp: new FormControl(this.otpInput,[
+  otpinput = '';
+ 
+  OTP_form = new FormGroup({
+  typedotp: new FormControl(this.otpinput,[
     Validators.required,
-    Validators.minLength(4),
-    Validators.maxLength(4)
-  ])
+    
+      ]),
 })
-  constructor(private service:UserServiceService, private router:Router,private _Activatedroute:ActivatedRoute) { }
+
+  constructor(private router:Router, private _Activatedroute:ActivatedRoute ,private service:UserServiceService) { }
 
   ngOnInit(): void {
   }
-  get otp(){ return this.otpForm.controls.otp; } 
-  onSubmitOTP(values:any){
+
+  msg = "";
+     get typedotp(){return this.OTP_form.controls.typedotp;}
+    onSubmitOTP(values:any){
+      // console.log("onotp");
     this._Activatedroute.paramMap.subscribe(params => { 
-      let userId = params.get('_id'); 
+      let userId = params.get('userId'); 
+      console.log(userId);
       this.service.getUserById(userId).subscribe((data)=>{
         var x=JSON.parse(JSON.stringify(data));
+        // console.log(x);
         const otp = x.otp;
-        const typedOTP = values.otp;
-        if(otp == typedOTP){
+        const typedotp = values.typedotp;
+        console.log("otp="+otp);
+        console.log("typedotp="+typedotp);
+        if(otp == typedotp){
           this.msg = '';
           console.log(userId);
-          this.service.verifyOTP(userId).subscribe((data)=>{
-            this.router.navigate(['username/'+userId]);
-            // Swal.fire({
-            //   icon: 'success',
-            //   title: 'Account created successfully. Login to continue',
-            //   showConfirmButton: true
-            // }) 
-          })
+    
+            this.router.navigate(['/username/'+userId]);
+          
         }
         else{
           this.msg = 'Invalid OTP. Try again';
         }
       });
     });
-  } 
+  }
+ 
+  onCancel(){
+    this.router.navigate(['/']);
+  }
 
 }

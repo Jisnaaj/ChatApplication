@@ -33,6 +33,20 @@ export class UserServiceService {
     let url = `${this.baseUrl}/verifyOTP`;
     return this.http.put(url,{item});
   }
+
+  nickname( item:any,userId:any){
+    let url = `${this.baseUrl}/savename/`+ userId;
+    return this.http.put(url,{item});
+
+  }
+
+  checkname(name:any)
+  {
+    let url = `${this.baseUrl}/checkName/`+ name;
+    return this.http.get(url);
+
+  }
+
     }
   
 

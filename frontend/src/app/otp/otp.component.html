@@ -1,19 +1,36 @@
-<div class="content">
-    <h1>OTP Verification Form</h1>
-    <div class="main">
-      <h2>OTP Verification</h2>
-      <form [formGroup]="otpForm" (ngSubmit)="onSubmitOTP(otpForm.value)">
-        
-        <h5>OTP</h5>
-        <input type="password" placeholder="OTP" formControlName="otp">
-        <mat-error>{{msg}}</mat-error>
-        <div *ngIf="otp.invalid && (otp.dirty || otp.touched)">
-          <mat-error *ngIf="otp.errors?.['required']">
-            OTP is required
-          </mat-error>
-        </div>
-        
-        <button mat-raised-button color="accent" [disabled]="!otpForm.valid">Verify OTP</button>
-      </form>
+<div id="back">
+  <div class="container">
+    <div class="row">
+      <div class="box">
+        <form class="form-horizontal span6" 
+        [formGroup]="OTP_form"
+        (ngSubmit)="onSubmitOTP(OTP_form.value)"           >
+  
+          <fieldset>
+            <legend >OTP Varification</legend>
+         
+            <div class="control-group">
+              <label class="control-label">Type OTP Here</label>
+              <div class="controls">
+                <input type="text" 
+                formControlName="typedotp"
+                class="input-block-level" 
+                pattern="\w+ \w+.*" title="Fill your first and last name" required>
+              </div>
+            </div>
+      
+             <div class="buttons"> 
+              
+              <button type="submit" class="btn btn-primary btns" >Submit</button>
+              <button type="button" class="btn btn-primary" id="cancel" (click)="onCancel()">Cancel</button>
+              <!-- <button type="button" class="btn">Cancel</button> -->
+          
+            
+             </div> 
+          </fieldset>
+        </form>
+      
+      </div>
     </div>
+  </div>
   </div>
