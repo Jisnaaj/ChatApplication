@@ -22,6 +22,7 @@ import { UserServiceService } from './user-service.service';
 import { OtpComponent } from './otp/otp.component';
 import { UsernameComponent } from './username/username.component';
 import { ChatboardComponent } from './chatboard/chatboard.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ChatboardComponent } from './chatboard/chatboard.component';
     OtpComponent,
     UsernameComponent,
     ChatboardComponent,
+    HomeComponent,
   
   ],
   imports: [

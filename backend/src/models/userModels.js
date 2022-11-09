@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   
-  userName: {
+  username: {
     type: String,
     required: false,
   },
@@ -31,10 +31,7 @@ password: {
     type: Date,
     default: Date.now(),
   },
-  flag: {
-    type: String,
-    default: "0",
-  },
+  
 });
 
 module.exports = mongoose.model("user", userSchema);
