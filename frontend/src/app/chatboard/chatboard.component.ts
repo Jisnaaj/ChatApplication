@@ -11,5 +11,7 @@ export class ChatboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onLogout(){}
+  onLogout(){
+    
+  }
 }

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserServiceService } from '../user-service.service';
+import { AuthService } from '../auth.service';
+import { FormGroup,FormControl,Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.css']
 })
-export class OtpComponent implements OnInit {
+export class OTPComponent implements OnInit {
 
   otpinput = '';
  
@@ -20,7 +20,7 @@ export class OtpComponent implements OnInit {
       ]),
 })
 
-  constructor(private router:Router, private _Activatedroute:ActivatedRoute ,private service:UserServiceService) { }
+  constructor(private router:Router, private _Activatedroute:ActivatedRoute ,private service:AuthService) { }
 
   ngOnInit(): void {
   }

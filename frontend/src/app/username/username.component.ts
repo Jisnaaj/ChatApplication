@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserServiceService } from '../user-service.service';
+import { AuthService } from '../auth.service';
 import { FormGroup,FormControl,Validators} from '@angular/forms';
 
 @Component({
@@ -9,15 +9,14 @@ import { FormGroup,FormControl,Validators} from '@angular/forms';
   styleUrls: ['./username.component.css']
 })
 export class UsernameComponent implements OnInit {
-
-  username="";
+ username="";
  User_form  = new FormGroup({
 nickname : new FormControl(this.username,[Validators.required]),
 
 })
   unameMsg: string = '';
   isExist: any= 0 ;
-  constructor(private router:Router,private service:UserServiceService, private _Activatedroute:ActivatedRoute ) { }
+  constructor(private router:Router,private service:AuthService, private _Activatedroute:ActivatedRoute ) { }
 
   ngOnInit(): void {
   }

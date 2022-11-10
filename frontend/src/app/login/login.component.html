@@ -1,84 +1,88 @@
-<div class="id">
-    <div class="container">
-      <div class="form1">
-        <mat-card>
-          <a routerLink="/"
-            ><button
-              mat-icon-button
-              aria-label="close mat-card-close"
-              mat-card-close
-            >
-              <mat-icon>home</mat-icon>
-            </button></a
-          >
-          <h1>Login</h1>
-          <form
-            [formGroup]="loginForm"
-            (ngSubmit)="onsubmitLogin(loginForm.value)"
-          >
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input
-                matInput
-                placeholder="Enter your email"
-                formControlName="email"
-              />
-              <mat-error *ngIf="login?.['email']?.errors?.['email'] && submitted"
-                >Invalid email</mat-error
-              >
-              <mat-error
-                *ngIf="login?.['email']?.errors?.['required'] && submitted"
-                >Required email</mat-error
-              >
-            </mat-form-field>
-  
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input
-                matInput
-                placeholder="Enter your password"
-                [type]="hide ? 'password' : 'text'"
-                formControlName="password"
-              />
-              <button
-                mat-icon-button
-                matSuffix
-                (click)="hide = !hide"
-                [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide"
-              >
-                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-              </button>
-              <mat-error
-                *ngIf="loginForm.controls['password'].hasError('minlength')"
-              >
-                Your password must be at least 5 characters long.</mat-error
-              >
-              <mat-error
-                *ngIf="login?.['password']?.errors?.['required'] && submitted"
-                >Required password</mat-error
-              >
-            </mat-form-field>
-            <mat-dialog-actions class="centering">
-              <button
-                class="btn"
-                mat-raised-button
-                color="accent"
-                [disabled]="!loginForm.valid"
-              >
-                Submit
-              </button>
-              <br />
-              <span
-                >New user?
-                <a class="link" routerLink="/signup"
-                  ><span style="color: crimson">Register here.</span>
-                </a></span
-              >
-            </mat-dialog-actions>
-          </form>
-        </mat-card>
-      </div>
-    </div>
-  </div>
-  
+
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!------ Include the above in your HEAD tag ---------->
+<div class="body">
+<div class="center">
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a routerLink="login" class="active" id="login-form-link">Login</a>
+							</div>
+							<div class="col-xs-6">
+								<a routerLink='' id="register-form-link">Register</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								
+								<form [formGroup]="loginForm"
+								(ngSubmit)="onsubmitlogin(loginForm.value)"
+								id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style="display: block;">
+									<div class="form-group">
+										<input 
+										type="text" 
+										name="username" 
+										id="username" 
+										tabindex="1" 
+										class="form-control" 
+										placeholder="Username" 
+										value=""
+										formControlName="username"
+										>
+										<div *ngIf="username.invalid && (username.dirty || username.touched)">
+											<mat-error *ngIf="username.errors?.['required']">
+											  Your name is required
+											</mat-error>
+										</div>
+									</div>
+									<div class="form-group">
+										<input 
+										type="password" 
+										name="password" 
+										id="password" 
+										tabindex="2" 
+										class="form-control" 
+										placeholder="Password"
+										formControlName="password">
+										<div  *ngIf="password.invalid && (password.dirty || password.touched)">
+											<mat-error *ngIf="password.errors?.['required']">
+											  Password is required
+											</mat-error>
+											<mat-error *ngIf="password.errors?.['minlength']">
+											  Minimum length is your password is 6
+											</mat-error>
+										  </div>
+									</div>
+									
+												<div class="buttons"> 
+												<button type="submit" class="btn btn-primary btns" [disabled]="!loginForm.valid" >Submit</button>
+												</div>
+												
+						 							 												
+									<div class="form-group">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="text-center">
+													<a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

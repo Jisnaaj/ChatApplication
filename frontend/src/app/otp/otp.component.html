@@ -1,35 +1,38 @@
-<div id="id">
-  <div class="container">
-    <div class="form1">
-        <form class="form-horizontal span6" 
-        [formGroup]="OTP_form"
-        (ngSubmit)="onSubmitOTP(OTP_form.value)"           >
-  
-          <fieldset>
-           <h2>OTP verification</h2>
-         
-            <div class="control-group">
-              <label class="control-label">Type OTP Here</label>
-              <div class="controls">
-                <input type="text" 
-                formControlName="typedotp"
-                class="input-block-level" 
-                pattern="\w+ \w+.*" title="Fill your first and last name" required>
-              </div></div><br>
-            
-      
-      
-              <div class="btn">
-              <button type="submit" class="btn btn-primary btns" >Submit</button><br>
-              <button type="button" class="btn btn-primary" id="cancel" (click)="onCancel()">Cancel</button>
+
+<!------ Include the above in your HEAD tag ---------->
+<div id="back">
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <form class="form-horizontal span6" 
+      [formGroup]="OTP_form"
+      (ngSubmit)="onSubmitOTP(OTP_form.value)"           >
+
+        <fieldset>
+          <legend >OTP Varification</legend>
+       
+          <div class="control-group">
+            <label class="control-label">Type OTP Here</label>
+            <div class="controls">
+              <input type="text" 
+              formControlName="typedotp"
+              class="input-block-level" 
+              pattern="\w+ \w+.*" title="Fill your first and last name" required>
             </div>
-          
+          </div>
+    
+           <div class="buttons"> 
             
+            <button type="submit" class="btn btn-primary btns" >Submit</button>
+            <button type="button" class="btn btn-primary" id="cancel" (click)="onCancel()">Cancel</button>
+            <!-- <button type="button" class="btn">Cancel</button> -->
         
-          </fieldset>
-        </form>
-      
-      </div>
+          
+           </div> 
+        </fieldset>
+      </form>
+    
     </div>
   </div>
-  
+</div>
+</div>

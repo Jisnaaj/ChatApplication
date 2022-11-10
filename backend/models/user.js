@@ -5,33 +5,34 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
-  username: {
-    type: String,
-    required: false,
-  },
   email: {
     type: String,
     required: true,
   },
-  otp: {
+  passwordHash: {
     type: String,
     required: true,
   },
-  otpVerified: {
-    type: String,
-    default: "0",
-  },
-password: {
+  confpassword:{
     type: String,
     required: true,
   },
- 
-  createdAt: {
+  otp:{
+    type:Number,
+    required: true,
+  },
+  username:{
+    type:String,
+  },
+  createdAt:{
     type: Date,
     default: Date.now(),
-  },
-  
+  }
+
 });
 
-module.exports = mongoose.model("user", userSchema);
+// exports.User = mongoose.model("User", userSchema);
+// exports.userSchema = userSchema;
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
