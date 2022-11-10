@@ -12,6 +12,17 @@ import { OTPComponent } from './otp/otp.component';
 import { ChatboardComponent } from './chatboard/chatboard.component';
 import { UsernameComponent } from './username/username.component';
 
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +39,17 @@ import { UsernameComponent } from './username/username.component';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
+
+    MatDialogModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
