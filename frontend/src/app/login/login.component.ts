@@ -42,10 +42,11 @@ export class LoginComponent implements OnInit {
 this.submittedlogin=true;
 this._auth.loginUser(values).subscribe((data)=>{
   var x=JSON.parse(JSON.stringify(data));
+  console.log(x);
           if(x.user == true)
           {
             // this._auth.userActive('1',x.username).subscribe((data)=>{
-              // console.log(data);
+               console.log(data);
             // })
             localStorage.setItem('username',x.username);
             this.router.navigate(['chatboard']);

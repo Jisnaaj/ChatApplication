@@ -1,5 +1,6 @@
 const User = require("../models/user");
 console.log("signup")
+const jwt = require("jsonwebtoken");
 const signUp = async (req, res) => {
 
   otp = req.params.otp;    
@@ -31,7 +32,9 @@ const login = async (req,res) =>{
     pwd = req.body.user.password;
     User.findOne({"username":uname},function(err,user){
       if(user){
-        if(pwd == user.pwd){
+        console.log("user");
+        if(pwd == user.passwordHash){
+          console.log("password ok");
           let payload = {subject:uname+pwd};
           let token =jwt.sign(payload,'secretkey');
           let userNames = {subject:uname};
@@ -50,7 +53,8 @@ const login = async (req,res) =>{
       }
     })
   }
-  catch{
+  catch {
+    // console.log(err);
     console.log("Login error");
   }
 }

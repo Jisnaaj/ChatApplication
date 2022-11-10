@@ -25,7 +25,7 @@
 								
 								<form [formGroup]="loginForm"
 								(ngSubmit)="onsubmitlogin(loginForm.value)"
-								id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style="display: block;">
+								id="login-form"  role="form" style="display: block;">
 									<div class="form-group">
 										<input 
 										type="text" 
@@ -61,7 +61,7 @@
 											</mat-error>
 										  </div>
 									</div>
-									
+									<mat-error>{{userMsg}}</mat-error>
 												<div class="buttons"> 
 												<button type="submit" class="btn btn-primary btns" [disabled]="!loginForm.valid" >Submit</button>
 												</div>
